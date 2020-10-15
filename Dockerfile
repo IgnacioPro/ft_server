@@ -6,7 +6,7 @@
 #    By: IgnacioHB <IgnacioHB@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/02 13:16:26 by IgnacioHB         #+#    #+#              #
-#    Updated: 2020/10/15 16:20:49 by IgnacioHB        ###   ########.fr        #
+#    Updated: 2020/10/15 18:19:08 by IgnacioHB        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ COPY /srcs/setup.sh /.
 # COPY /srcs/wordpress/wp-admin/ /var/www/html/wordpress/
 COPY /srcs/phpMyAdmin/ /var/www/html/phpMyAdmin/
 COPY /srcs/wordpress/wordpress /etc/nginx/sites-available/
-COPY /config.inc.php /var/www/html/phpMyAdmin/
+COPY /srcs/wordpress.sql /tmp/
+# COPY /config.inc.php /var/www/html/phpMyAdmin/
 
 CMD bash setup.sh

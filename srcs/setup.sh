@@ -6,7 +6,7 @@
 #    By: IgnacioHB <IgnacioHB@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/04 23:33:35 by IgnacioHB         #+#    #+#              #
-#    Updated: 2020/10/15 16:25:39 by IgnacioHB        ###   ########.fr        #
+#    Updated: 2020/10/15 18:32:09 by IgnacioHB        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,9 @@ rm /etc/nginx/sites-enabled/default
 
 mkdir /var/www/html/phpMyAdmin/tmp/
 chmod 777 /var/www/html/phpMyAdmin/tmp/
-chown -R www-data:www-data /var/www/html/phpMyAdmin
+chown -R www-data:www-data /var/www/html/phpMyAdmin/
+
+mysql -u root wordpress < /tmp/wordpress.sql
 
 # openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
 echo "flush privileges;" | mysql -u root
