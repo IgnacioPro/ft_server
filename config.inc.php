@@ -1,3 +1,5 @@
+<?php
+
 $cfg['blowfish_secret'] = 'r6X3QiJQ,OMzzn;EBGl608kbU-ovtUw1';
 $i = 0;
 
@@ -11,7 +13,7 @@ $cfg['Servers'][$i]['auth_type'] = 'cookie';
 /* Server parameters */
 $cfg['Servers'][$i]['host'] = 'localhost';
 $cfg['Servers'][$i]['compress'] = false;
-$cfg['Servers'][$i]['AllowNoPassword'] = true;
+$cfg['Servers'][$i]['AllowNoPassword'] = false;
 
 /**
  * phpMyAdmin configuration storage settings.
@@ -24,7 +26,7 @@ $cfg['Servers'][$i]['controluser'] = 'ignacio';
 $cfg['Servers'][$i]['controlpass'] = '42madrid';
 
 /* Storage database and tables */
-$cfg['Servers'][$i]['pmadb'] = 'wordpress';
+$cfg['Servers'][$i]['pmadb'] = 'phpmyadmin';
 $cfg['Servers'][$i]['bookmarktable'] = 'pma__bookmark';
 $cfg['Servers'][$i]['relation'] = 'pma__relation';
 $cfg['Servers'][$i]['table_info'] = 'pma__table_info';
