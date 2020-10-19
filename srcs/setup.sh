@@ -6,7 +6,7 @@
 #    By: IgnacioHB <IgnacioHB@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/04 23:33:35 by IgnacioHB         #+#    #+#              #
-#    Updated: 2020/10/19 13:12:43 by IgnacioHB        ###   ########.fr        #
+#    Updated: 2020/10/19 20:15:10 by IgnacioHB        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,8 @@ service mysql start
 # creating mysql database for wordpress
 mysql < /var/www/html/phpMyAdmin/sql/create_tables.sql
 echo "create database wordpress default character set utf8 collate utf8_unicode_ci;" | mysql -u root
-# echo "create database phpmyadmin default character set utf8 collate utf8_unicode_ci;" | mysql -u root
-# echo "grant all on wordpress.* to 'ignacio'@'localhost' identified by '42madrid';" | mysql -u root
 echo "GRANT ALL PRIVILEGES ON *.* TO 'ignacio'@'localhost' IDENTIFIED BY '42madrid';" | mysql -u root
 echo "flush privileges;" | mysql -u root
-echo "exit;"
 
 # downloading and extracting all wordpress files to the correct folder
 wget -P /tmp/ https://es.wordpress.org/latest-es_ES.tar.gz
@@ -35,6 +32,7 @@ ln -s /etc/nginx/sites-available/wordpress /etc/nginx/sites-enabled/
 rm /etc/nginx/sites-available/default 
 rm /etc/nginx/sites-enabled/default
 
+# setting up phpmyadmin space management
 mkdir /var/www/html/phpMyAdmin/tmp/
 chmod 777 /var/www/html/phpMyAdmin/tmp/
 chown -R www-data:www-data /var/www/html/phpMyAdmin/
@@ -49,6 +47,12 @@ openssl dhparam -out /etc/ssl/certs/dhparam.pem 1000
 
 chown -R www-data:www-data /var/www/*
 chmod -R 755 /var/www/*
+
+if ${autoindex=off}; then
+    sed -i 's/autoindex on/autoindex off/' /etc/nginx/sites-enabled/wordpress
+else
+    sed -i 's/autoindex off/autoindex on/' /etc/nginx/sites-enabled/wordpress
+fi
 
 # restarting nginx for changes to take effect
 service php7.3-fpm restart
