@@ -6,7 +6,7 @@
 #    By: IgnacioHB <IgnacioHB@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/04 23:33:35 by IgnacioHB         #+#    #+#              #
-#    Updated: 2020/10/16 17:35:00 by IgnacioHB        ###   ########.fr        #
+#    Updated: 2020/10/19 13:12:43 by IgnacioHB        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,15 +43,16 @@ mysql -u root wordpress < /tmp/wordpress.sql
 echo "flush privileges;" | mysql -u root
 
 # setting up ssl
-
 chmod 700 /etc/ssl/private
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 -subj "/C=SP/ST=Spain/L=Madrid/O=42/CN=127.0.0.1" -keyout /etc/ssl/private/nginx_server.key -out /etc/ssl/certs/nginx_server.crt 
-openssl dhparam -out /etc/nginx/dhparam.pem 1000
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -subj "/C=SP/ST=Spain/L=Madrid/O=42/CN=127.0.0.1" -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
+openssl dhparam -out /etc/ssl/certs/dhparam.pem 1000
+
 chown -R www-data:www-data /var/www/*
 chmod -R 755 /var/www/*
 
 # restarting nginx for changes to take effect
 service php7.3-fpm restart
 service nginx restart
+
 # access to command line inside the container
 bash

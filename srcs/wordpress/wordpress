@@ -1,6 +1,14 @@
 server {
-        listen 80 default_server;
-        listen [::]:80 default_server;
+        listen 443 ssl;
+        listen [::]:443 ssl;
+        ssl off;
+
+        server_name localhost;
+
+        ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
+        ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key ;
+        include snippets/self-signed.conf;
+        include snippets/ssl-params.conf;
 
         root /var/www/html/;
         index index.php;
@@ -13,4 +21,11 @@ server {
 			include snippets/fastcgi-php.conf;
 			fastcgi_pass unix:/run/php/php7.3-fpm.sock;
         }
+}
+
+server {
+    listen 80;
+    listen [::]:80;
+
+    return 302 https://$server_name$request_uri;
 }
