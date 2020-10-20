@@ -6,7 +6,7 @@
 #    By: ihorcada <ihorcada@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/02 13:16:26 by IgnacioHB         #+#    #+#              #
-#    Updated: 2020/10/20 11:34:29 by ihorcada         ###   ########.fr        #
+#    Updated: 2020/10/20 11:39:40 by ihorcada         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ RUN apt-get install -y	vim \
 COPY /srcs/wordpress/wp-config.php /var/www/html/wordpress/	
 COPY /srcs/setup.sh /.
 COPY /srcs/phpMyAdmin/ /var/www/html/phpMyAdmin/
-COPY /srcs/wordpress/wordpress /etc/nginx/sites-available/
+COPY /srcs/wordpress/nginx.config /etc/nginx/sites-available/
 COPY /srcs/wordpress.sql /tmp/
 COPY /srcs/config.inc.php /var/www/html/phpMyAdmin/
 COPY /srcs/autoindex.sh /.

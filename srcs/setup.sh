@@ -6,7 +6,7 @@
 #    By: ihorcada <ihorcada@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/04 23:33:35 by IgnacioHB         #+#    #+#              #
-#    Updated: 2020/10/20 11:34:35 by ihorcada         ###   ########.fr        #
+#    Updated: 2020/10/20 11:42:12 by ihorcada         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ wget -P /tmp/ https://es.wordpress.org/latest-es_ES.tar.gz
 tar -xvf /tmp/*.tar.gz -C /var/www/html/
 
 # setting sites enabled on nginx
-ln -s /etc/nginx/sites-available/wordpress /etc/nginx/sites-enabled/
+ln -s /etc/nginx/sites-available/nginx.config /etc/nginx/sites-enabled/
 rm /etc/nginx/sites-available/default 
 rm /etc/nginx/sites-enabled/default
 
@@ -36,7 +36,6 @@ rm /etc/nginx/sites-enabled/default
 mkdir /var/www/html/phpMyAdmin/tmp/
 chmod 777 /var/www/html/phpMyAdmin/tmp/
 chown -R www-data:www-data /var/www/html/phpMyAdmin/
-
 mysql -u root wordpress < /tmp/wordpress.sql
 echo "flush privileges;" | mysql -u root
 
@@ -49,14 +48,7 @@ chown -R www-data:www-data /var/www/*
 chmod -R 755 /var/www/*
 
 # setting autoindex on or off
-
-sed -i "s/autoindex on/$autoindex/" /etc/nginx/sites-enabled/wordpress
-
-# if ${autoindex}=off; then
-#     sed -i 's/autoindex on/autoindex off/' /etc/nginx/sites-enabled/wordpress
-# else
-#     sed -i 's/autoindex off/autoindex on/' /etc/nginx/sites-enabled/wordpress
-# fi
+sed -i "s/autoindex on/$autoindex/" /etc/nginx/sites-enabled/nginx.config
 
 # restarting nginx for changes to take effect
 service php7.3-fpm restart
