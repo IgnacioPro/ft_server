@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Dockerfile                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ihorcada <ihorcada@student.42.fr>          +#+  +:+       +#+         #
+#    By: IgnacioHB <IgnacioHB@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/02 13:16:26 by IgnacioHB         #+#    #+#              #
-#    Updated: 2020/10/20 11:39:40 by ihorcada         ###   ########.fr        #
+#    Updated: 2020/10/20 18:35:39 by IgnacioHB        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,8 @@ COPY /srcs/config.inc.php /var/www/html/phpMyAdmin/
 COPY /srcs/autoindex.sh /.
 COPY /srcs/self-signed.conf /etc/nginx/snippets/
 COPY /srcs/ssl-params.conf /etc/nginx/snippets/
+COPY /srcs/html/index.html /var/www/html/
+COPY /srcs/html/style.css /var/www/html/
 
 
 CMD bash setup.sh
