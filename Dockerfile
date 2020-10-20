@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Dockerfile                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: IgnacioHB <IgnacioHB@student.42.fr>        +#+  +:+       +#+         #
+#    By: ihorcada <ihorcada@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/02 13:16:26 by IgnacioHB         #+#    #+#              #
-#    Updated: 2020/10/19 20:20:18 by IgnacioHB        ###   ########.fr        #
+#    Updated: 2020/10/20 11:34:29 by ihorcada         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ FROM debian:buster
 
 LABEL Ignacio ihorcada <ihorcada@student.42madrid.com>
 
-ENV autoindex=on autoindex=off
+ENV autoindex="autoindex on"
 
 RUN apt-get update
 RUN apt-get install -y	vim \

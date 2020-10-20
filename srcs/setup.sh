@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    setup.sh                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: IgnacioHB <IgnacioHB@student.42.fr>        +#+  +:+       +#+         #
+#    By: ihorcada <ihorcada@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/04 23:33:35 by IgnacioHB         #+#    #+#              #
-#    Updated: 2020/10/19 20:15:10 by IgnacioHB        ###   ########.fr        #
+#    Updated: 2020/10/20 11:34:35 by ihorcada         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,11 +48,15 @@ openssl dhparam -out /etc/ssl/certs/dhparam.pem 1000
 chown -R www-data:www-data /var/www/*
 chmod -R 755 /var/www/*
 
-if ${autoindex=off}; then
-    sed -i 's/autoindex on/autoindex off/' /etc/nginx/sites-enabled/wordpress
-else
-    sed -i 's/autoindex off/autoindex on/' /etc/nginx/sites-enabled/wordpress
-fi
+# setting autoindex on or off
+
+sed -i "s/autoindex on/$autoindex/" /etc/nginx/sites-enabled/wordpress
+
+# if ${autoindex}=off; then
+#     sed -i 's/autoindex on/autoindex off/' /etc/nginx/sites-enabled/wordpress
+# else
+#     sed -i 's/autoindex off/autoindex on/' /etc/nginx/sites-enabled/wordpress
+# fi
 
 # restarting nginx for changes to take effect
 service php7.3-fpm restart
