@@ -6,7 +6,7 @@
 #    By: IgnacioHB <IgnacioHB@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/02 13:16:26 by IgnacioHB         #+#    #+#              #
-#    Updated: 2020/10/20 18:35:39 by IgnacioHB        ###   ########.fr        #
+#    Updated: 2020/10/21 16:13:53 by IgnacioHB        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,5 @@ COPY /srcs/self-signed.conf /etc/nginx/snippets/
 COPY /srcs/ssl-params.conf /etc/nginx/snippets/
 COPY /srcs/html/index.html /var/www/html/
 COPY /srcs/html/style.css /var/www/html/
-
 
 CMD bash setup.sh
