@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    setup.sh                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ihorcada <ihorcada@student.42.fr>          +#+  +:+       +#+         #
+#    By: IgnacioHB <IgnacioHB@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/04 23:33:35 by IgnacioHB         #+#    #+#              #
-#    Updated: 2020/10/20 11:42:12 by ihorcada         ###   ########.fr        #
+#    Updated: 2020/10/23 17:48:07 by IgnacioHB        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ tar -xvf /tmp/*.tar.gz -C /var/www/html/
 
 # setting sites enabled on nginx
 ln -s /etc/nginx/sites-available/nginx.config /etc/nginx/sites-enabled/
-rm /etc/nginx/sites-available/default 
+# rm /etc/nginx/sites-available/default 
 rm /etc/nginx/sites-enabled/default
 
 # setting up phpmyadmin space management
@@ -48,7 +48,12 @@ chown -R www-data:www-data /var/www/*
 chmod -R 755 /var/www/*
 
 # setting autoindex on or off
-sed -i "s/autoindex on/$autoindex/" /etc/nginx/sites-enabled/nginx.config
+if [ "$autoindex" = "autoindex off" ] ;
+then
+    sed -i "s/autoindex on/autoindex off/" /etc/nginx/sites-enabled/nginx.config
+    cp /tmp/index.html /var/www/html/
+    cp /tmp/style.css /var/www/html/
+fi
 
 # restarting nginx for changes to take effect
 service php7.3-fpm restart
