@@ -6,7 +6,7 @@
 #    By: IgnacioHB <IgnacioHB@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/02 13:16:26 by IgnacioHB         #+#    #+#              #
-#    Updated: 2020/10/23 17:47:32 by IgnacioHB        ###   ########.fr        #
+#    Updated: 2020/10/25 18:09:02 by IgnacioHB        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,10 +39,7 @@ COPY /srcs/setup.sh /.
 COPY /srcs/phpMyAdmin/ /var/www/html/phpMyAdmin/
 COPY /srcs/wordpress/nginx.config /etc/nginx/sites-available/
 COPY /srcs/wordpress.sql /tmp/
-COPY /srcs/config.inc.php /var/www/html/phpMyAdmin/
-COPY /srcs/autoindex.sh /.
-COPY /srcs/self-signed.conf /etc/nginx/snippets/
-COPY /srcs/ssl-params.conf /etc/nginx/snippets/
+COPY /srcs/ssl/ /etc/nginx/snippets/
 COPY /srcs/html/index.html /tmp/
 COPY /srcs/html/style.css /tmp/
 
