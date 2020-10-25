@@ -6,11 +6,12 @@
 #    By: IgnacioHB <IgnacioHB@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/04 23:33:35 by IgnacioHB         #+#    #+#              #
-#    Updated: 2020/10/23 17:48:07 by IgnacioHB        ###   ########.fr        #
+#    Updated: 2020/10/25 19:20:33 by IgnacioHB        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #/bin/bash
+
 
 # starting services
 service nginx start
@@ -29,7 +30,7 @@ tar -xvf /tmp/*.tar.gz -C /var/www/html/
 
 # setting sites enabled on nginx
 ln -s /etc/nginx/sites-available/nginx.config /etc/nginx/sites-enabled/
-# rm /etc/nginx/sites-available/default 
+rm /etc/nginx/sites-available/default 
 rm /etc/nginx/sites-enabled/default
 
 # setting up phpmyadmin space management
